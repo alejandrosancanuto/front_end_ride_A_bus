@@ -1,11 +1,16 @@
-import 'package:app_ride_a_bus/contrase%C3%B1aOlvidada.dart';
-import 'package:app_ride_a_bus/pantallaMenu.dart';
-import 'package:app_ride_a_bus/segundoInicio.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Contrasenyacrear extends StatefulWidget {
-  const Contrasenyacrear({super.key});
+  final TextEditingController? controller;
+  final ValueChanged<String>? onChanged;
+  final FormFieldValidator<String>? validator;
+
+  const Contrasenyacrear({
+    super.key,
+    this.controller,
+    this.onChanged,
+    this.validator,
+  });
 
   @override
   State<Contrasenyacrear> createState() => _PasswordFieldState();
@@ -21,8 +26,11 @@ Widget build(BuildContext context) {
     children: [
 
       // Campo de texto para la contraseña
-      TextField( 
+      TextFormField( 
+        controller: widget.controller,
         obscureText: _obscureText, // Oculta o muestra el texto según _obscureText
+        onChanged: widget.onChanged,
+        validator: widget.validator,
         decoration: InputDecoration( 
           filled: true, // Habilita color de fondo
           fillColor: Colors.white, // Color de fondo del TextField
@@ -34,17 +42,24 @@ Widget build(BuildContext context) {
             icon: Icon( 
               _obscureText ? Icons.visibility_off : Icons.visibility, // Cambia icono según estado
               color: Colors.grey[400], 
-            ), 
+            ), // aqui lo que hace es q encaso de que le de cambia la visibilidad de la contraseña
             onPressed: () { 
               setState(() { 
                 _obscureText = !_obscureText; // Cambia el estado de visibilidad
               }); 
             }, 
           ), 
-
           // Bordes redondeados
           border: OutlineInputBorder( 
-            borderRadius: BorderRadius.circular(20), 
+            borderRadius: BorderRadius.circular(30), 
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(color: Colors.red, width: 2),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(color: Colors.red, width: 2),
           ), 
         ), 
       ),

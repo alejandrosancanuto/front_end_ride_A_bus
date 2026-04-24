@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'primerInicioSesion.dart';
 
-
+// EN ESTE PANTALLA LO QUE TENEMOS ES UNA SPLASH SCREEN, QUE LA TENGO PARA SIMULAR COMO UNA PANTALLA DE CARGA
+//
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _PantallaprimeraState extends State<Pantallaprimera> {
       });
 
       // Después de 0.5 segundos más (duración del fade), navega a la pantalla de inicio de sesión
-      Timer(const Duration(milliseconds: 500), () {
+      Timer(const Duration(milliseconds: 1500), () {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const InicioSesion()), // Reemplaza la pantalla actual
@@ -48,7 +49,7 @@ class _PantallaprimeraState extends State<Pantallaprimera> {
 
       body: AnimatedOpacity(
         opacity: _opacity, // Controla la visibilidad del contenido
-        duration: const Duration(milliseconds: 500), // Tiempo del efecto de fade
+        duration: const Duration(milliseconds: 1500), // Tiempo del efecto de fade
         child: Stack(
           fit: StackFit.expand, // Hace que los hijos ocupen toda la pantalla
           children: [

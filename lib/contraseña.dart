@@ -4,7 +4,16 @@ import 'package:flutter/material.dart';
 
 // Widget de campo de contraseña con estado
 class PasswordField extends StatefulWidget {
-  const PasswordField({super.key});
+  final TextEditingController? controller;
+  final ValueChanged<String>? onChanged;
+  final FormFieldValidator<String>? validator;
+
+  const PasswordField({
+    super.key,
+    this.controller,
+    this.onChanged,
+    this.validator,
+  });
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -20,8 +29,11 @@ class _PasswordFieldState extends State<PasswordField> {
       children: [
 
         // Campo de texto para la contraseña
-        TextField(
+        TextFormField(
+          controller: widget.controller,
           obscureText: _obscureText, // Oculta el texto si _obscureText es true
+          onChanged: widget.onChanged,
+          validator: widget.validator,
           decoration: InputDecoration(
             filled: true, // Pone fondo blanco
             fillColor: Colors.white, // Color del fondo
@@ -43,7 +55,15 @@ class _PasswordFieldState extends State<PasswordField> {
 
             // Borde redondeado
             border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(color: Colors.red, width: 2),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(color: Colors.red, width: 2),
             ),
           ),
         ),
