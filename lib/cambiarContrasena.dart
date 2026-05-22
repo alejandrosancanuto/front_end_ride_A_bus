@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class cambiarContrasena extends StatefulWidget {
-  final String correoElectronico; // 👈 El email del usuario que viene de la pantalla anterior
+  final String correoElectronico; // El email del usuario que viene de la pantalla anterior
 
   const cambiarContrasena({
     super.key,
@@ -17,7 +17,7 @@ class cambiarContrasena extends StatefulWidget {
 }
 
 class _PasswordFieldState extends State<cambiarContrasena> {
-  // Controllers para cada campo
+  // Controllers para cada campo de la contraseña
   final _codigoController = TextEditingController();
   final _nuevaPassController = TextEditingController();
   final _repetirPassController = TextEditingController();
@@ -40,9 +40,9 @@ class _PasswordFieldState extends State<cambiarContrasena> {
     super.dispose();
   }
 
-  // ──────────────────────────────────────
+  
   // LLAMADA A LA API
-  // ──────────────────────────────────────
+  
   Future<void> _cambiarContrasena() async {
     // Primero valida el formulario
     if (!_formKey.currentState!.validate()) return;
@@ -63,7 +63,7 @@ class _PasswordFieldState extends State<cambiarContrasena> {
       final data = jsonDecode(response.body);
 // aqui con la respuesta que le da la accion , si se ejecuta dentro del tiempo puesto da okey, contraseña cambiada
       if (response.statusCode == 200) {
-        // ✅ Éxito
+        //  Éxito
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -75,7 +75,7 @@ class _PasswordFieldState extends State<cambiarContrasena> {
           Navigator.of(context).popUntil((route) => route.isFirst);
         }
       } else {
-        // ❌ Error del servidor (código incorrecto, expirado, etc.), en caso de que no de que pase cualquier fallo
+        //  Error del servidor (código incorrecto, expirado, etc.), en caso de que no de que pase cualquier fallo
         // da error
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -87,7 +87,7 @@ class _PasswordFieldState extends State<cambiarContrasena> {
         }
       }
     } catch (e) {
-      // ❌ Error de conexión
+      //  Error de conexión
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

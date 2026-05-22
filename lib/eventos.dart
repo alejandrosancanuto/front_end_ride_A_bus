@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'package:app_ride_a_bus/eventos.dart';
 import 'package:app_ride_a_bus/horarioeventos.dart';
+import 'package:app_ride_a_bus/misBilletes.dart';
 import 'package:app_ride_a_bus/pantallaMenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:app_ride_a_bus/paradas.dart';
@@ -70,11 +71,7 @@ class _PantallaEventosState extends State<PantallaEventos> {
       "imagen":
           "https://offloadmedia.feverup.com/valenciasecreta.com/wp-content/uploads/2022/05/04064220/Latin-Fest-1.jpg"
     },
-    {
-      "nombre": "Festival De Las Artes",
-      "imagen":
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcZMw9eiCwcAfud-Ka6ORvF-rL4vS8q_enAQ&s"
-    },
+    
     {
       "nombre": "Valencia vs Levante ",
       "imagen":
@@ -206,7 +203,7 @@ Positioned(
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>HorarioEventos(evento: nombre)),
+                              MaterialPageRoute(builder: (context) =>HorarioEventos(evento: nombre, email: widget.email)),
                             );
                           },
                         child:Container(
@@ -302,7 +299,7 @@ Positioned(
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Pantallamenu(),
+                      builder: (context) => Pantallamenu(email: widget.email),
                     ),
                   );
                 },
@@ -313,6 +310,13 @@ Positioned(
                       decoration: BoxDecoration(
                         color: boxColor,
                         borderRadius: BorderRadius.circular(30),
+                        boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(8),
@@ -342,7 +346,7 @@ Positioned(
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PantallaParadas(),
+                      builder: (context) => PantallaParadas(email: widget.email),
                     ),
                   );
                 },
@@ -353,6 +357,13 @@ Positioned(
                       decoration: BoxDecoration(
                         color: boxColor,
                         borderRadius: BorderRadius.circular(30),
+                        boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(8),
@@ -383,7 +394,7 @@ Positioned(
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PantallaEventos(),
+                      builder: (context) => PantallaEventos(email: widget.email),
                     ),
                   );
                 },
@@ -394,6 +405,13 @@ Positioned(
                       decoration: BoxDecoration(
                         color: boxColor,
                         borderRadius: BorderRadius.circular(30),
+                        boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(8),
@@ -413,6 +431,54 @@ Positioned(
                 ),
               ),
             ),
+Positioned(
+              bottom: 70,
+              left: 310,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MisBilletes(email: widget.email),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: boxColor,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Icon(CupertinoIcons.ticket_fill, size: 50),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      "MIS BILLETES",
+                      style: GoogleFonts.lato(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
+
 
           ],
         ),

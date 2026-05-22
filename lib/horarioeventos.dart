@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HorarioEventos extends StatefulWidget {
   
-  const HorarioEventos({super.key, this.evento});
+  const HorarioEventos({super.key, this.evento, this.email});
   final String? evento;
+  final String? email;
   
 
   @override
@@ -88,7 +89,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Marques del Turia 137')),
+      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Marques del Turia 137', horaSalida: DateTime(2024, 1, 1, 19, 0), email: widget.email)),
     );
   },
   child:
@@ -174,7 +175,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Marques del Turia 137')),
+      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Marques del Turia 137', horaSalida: DateTime(2024, 1, 1, 19, 30), email: widget.email)),
     );
   },
   child:
@@ -201,7 +202,7 @@ GestureDetector(
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           child: Text(
-                        'Salida \n 19:00',
+                        'Salida \n 19:30',
                         style: GoogleFonts.plusJakartaSans(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white),
                       ),
                         ),
@@ -259,7 +260,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Gran via de las Cortes Valencianas 3')),
+      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Avenida de las Cortes Valencianas 3', horaSalida: DateTime(2024, 1, 1, 20, 0), email: widget.email)),
     );
   },
   child:
@@ -286,7 +287,7 @@ GestureDetector(
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             child: Text(
-                          'Salida \n 19:00',
+                          'Salida \n 20:00',
                           style: GoogleFonts.plusJakartaSans(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white),
                         ),
                           ),
@@ -308,7 +309,7 @@ GestureDetector(
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
-                                      'Gran via de las Cortes Valencianas 3',
+                                      'Avenida de las Cortes Valencianas 3',
                                       style: GoogleFonts.plusJakartaSans(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -345,7 +346,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: ' Av De Francia 279')),
+      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: ' Av De Francia 279', horaSalida: DateTime(2024, 1, 1, 20, 30), email: widget.email)),
     );
   },
   child:
@@ -372,7 +373,7 @@ GestureDetector(
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             child: Text(
-                          'Salida \n 19:00',
+                          'Salida \n 20:30',
                           style: GoogleFonts.plusJakartaSans(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white),
                         ),
                           ),
@@ -403,6 +404,7 @@ GestureDetector(
                                       softWrap: true,
                                     ),
                                   ),
+                                
                                 ],
                               ),
                             ),
@@ -430,7 +432,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Av Dr.Tomas Sala 279')),
+      MaterialPageRoute(builder: (context) => PreCompra(evento: widget.evento,direccionParada: 'Av Dr.Tomas Sala 279', horaSalida: DateTime(2024, 1, 1, 21, 0), email: widget.email)),
     );
   },
   child:
@@ -457,7 +459,7 @@ GestureDetector(
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             child: Text(
-                          'Salida \n 19:00',
+                          'Salida \n 21:00',
                           style: GoogleFonts.plusJakartaSans(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white),
                         ),
                           ),

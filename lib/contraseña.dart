@@ -70,7 +70,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
         SizedBox(height: 8), // Pequeño espacio entre campo y texto
 
-        // Texto "¿Has olvidado tu contraseña?" alineado a la derecha
+        // Texto "¿Has olvidado tu contraseña?" que si le das click te lleva a la pantalla de recuperar contraseña
         Align(
           alignment: Alignment.centerRight,
           child: GestureDetector(

@@ -1,4 +1,4 @@
-// 👈 Pantalla donde metes el código
+
 import 'package:app_ride_a_bus/cambiarContrasena.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +50,7 @@ class _ContrasenyaolvidadaState extends State<Contrasenyaolvidada> {
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        //  Correo enviado correctamente → navega a la pantalla del código
+        //  Correo enviado correctamente  navega a la pantalla del código
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -228,7 +228,7 @@ class _ContrasenyaolvidadaState extends State<Contrasenyaolvidada> {
                       SizedBox(
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: _cargando ? null : _enviarCodigo, // 👈 Desactivado mientras carga
+                          onPressed: _cargando ? null : _enviarCodigo, //  Desactivado mientras carga
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF4A90E2),
                             shape: RoundedRectangleBorder(
@@ -250,7 +250,6 @@ class _ContrasenyaolvidadaState extends State<Contrasenyaolvidada> {
                       const SizedBox(height: 16),
 
                       // Botón iniciar sesión
-                      
                     ],
                   ),
                 ),

@@ -1,7 +1,9 @@
 import 'package:app_ride_a_bus/eventos.dart';
+import 'package:app_ride_a_bus/misBilletes.dart';
+import 'package:app_ride_a_bus/valencia_paradas_map.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:app_ride_a_bus/paradas.dart';
 import 'main.dart'; // IMPORTANTE para acceder a MyApp
 
@@ -19,17 +21,6 @@ class Pantallamenu extends StatefulWidget {
 }
 
 class _PantallamenuState extends State<Pantallamenu> {
-
-  Future<void> _abrirGoogleMaps() async {
-    final Uri url = Uri.parse(
-      'https://www.google.com/maps/search/?api=1&query=Current+Location',
-    );
-
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw 'No se pudo abrir Google Maps';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
 
@@ -92,20 +83,17 @@ class _PantallamenuState extends State<Pantallamenu> {
               ),
             ),
 
-            // IMAGEN
+            // Mapa interactivo (OpenStreetMap) con paradas en Valencia
             Positioned(
-              top: 350,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: InkWell(
-                  onTap: _abrirGoogleMaps,
-                  child: Image.asset(
-                    'assets/images/MAPA.png',
-                    width: 330,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              top: 260,
+              left: 16,
+              right: 16,
+              bottom: 180,
+              child: Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(20),
+                clipBehavior: Clip.antiAlias,
+                child: const ValenciaParadasMap(),
               ),
             ),
 
@@ -164,7 +152,7 @@ class _PantallamenuState extends State<Pantallamenu> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PantallaParadas(),
+                      builder: (context) => PantallaParadas(email: widget.email),
                     ),
                   );
                 },
@@ -214,7 +202,7 @@ class _PantallamenuState extends State<Pantallamenu> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PantallaEventos(),
+                      builder: (context) => PantallaEventos(email: widget.email),
                     ),
                   );
                 },
@@ -253,7 +241,54 @@ class _PantallamenuState extends State<Pantallamenu> {
                   ],
                 ),
               ),
-            )
+            ),
+
+
+            Positioned(
+              bottom: 70,
+              left: 310,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MisBilletes(email: widget.email),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: boxColor,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Icon(CupertinoIcons.ticket_fill, size: 50),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      "MIS BILLETES",
+                      style: GoogleFonts.lato(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: textColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
